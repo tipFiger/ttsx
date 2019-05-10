@@ -1,9 +1,9 @@
 
 from django.urls import path
 
-from goods import views
+from goods.views import index
 
 urlpatterns = [
-    path('index/', views.index)
+    path('index/', index, name='index')
 
 ]

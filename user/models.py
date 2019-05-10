@@ -10,7 +10,7 @@ class User(models.Model):
     password = models.CharField(max_length=255, verbose_name="密码")
     birthday = models.DateField(null=True, blank=True, verbose_name="出生年月")
     GENDER = (
-        ("male", u"男"),
+        ("male", "男"),
         ("female", "女")
     )
     gender = models.CharField(max_length=6, choices=GENDER, default="female",
@@ -21,6 +21,14 @@ class User(models.Model):
     class Meta:
         db_table = 'f_user'
 
+class UserToken(models.Model):
+    token = models.CharField(max_length=100, unique=True, null=False,
+                             verbose_name='token标识符')
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    out_time = models.DateTimeField(null=True)
+
+    class Meta:
+        db_table = 'my_token'
 
 class UserAddress(models.Model):
     """
@@ -38,3 +46,8 @@ class UserAddress(models.Model):
 
     class Meta:
         db_table = 'f_user_address'
+
+
+
+
+
