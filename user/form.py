@@ -70,3 +70,23 @@ class LoginForm(forms.Form):
         if not User.objects.filter(username=username).exists():
             raise forms.ValidationError('登录账号不存在，请去注册')
         return self.cleaned_data.get('username')
+
+
+
+class UserAddressForm(forms.Form):
+    signer_name = forms.CharField(required=True,
+                                  error_messages={
+                                      'required': '收件人必填'
+                                  })
+    address = forms.CharField(required=True,
+                              error_messages={
+                                  'required': '必填'
+                              })
+    postcode = forms.CharField(required=True,
+                               error_messages={
+                                   'required': '邮编必填'
+                               })
+    mobile = forms.CharField(required=True,
+                             error_messages={
+                                 'required': '手机必填'
+                             })

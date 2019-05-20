@@ -49,7 +49,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'utils.middleware.UserLoginMiddleware'
+    'utils.middleware.UserLoginMiddleware',
+    'utils.syncMiddleware.SessionSyncMiddleware',
 ]
 
 ROOT_URLCONF = 'ttsx.urls'
